@@ -70,31 +70,26 @@ namespace Lab1
                     tableRow.UpdateRow(newTableRow);
             }
         }
-        public TableRow SelectRowByIndex(int index)
-        {
-            return table[index];
-        }
-        public Table SelectRowByDirectKey(char charKey)
+        public Table SelectByDirectKey(char charKey)
         {
             Table result = null;
-            for (int i = 0; i < table.Count; i++)
+            if (point >= table.Count) point = 0;
             {
-                if (table[i].Key.CharKey == charKey) result.Insert(table[i]);
+                for (int i = point; i < table.Count; i++)
+                {
+                    if (table[i].Key.CharKey == charKey)
+                    {
+                        result.Insert(table[i]);
+                        point++;
+                        break;
+                    }
+                }
             }
-            if (result.table.Any())
-            {
-                return result;
-            }
-            else
-            {
-                Console.WriteLine("This key is empty");
-                return null;
-            }
+            return result;
         }
-
-        public Table SelectBySimilarSearch(Key key)
+        public Table SelectBySimilarSearch(string searchKey)
         {
-            string searchKey = key.StringKey.Cast();
+            searchKey.Cast();
 
             Table result = null;
             int maxSimilarity = 0;
@@ -115,13 +110,13 @@ namespace Lab1
                     {
                         if (tempSimilarity == maxSimilarity)
                         {
-                            result.Insert(tempRow);
+                            result.Insert(tableRow);
                         }
                         else if (tempSimilarity > maxSimilarity)
                         {
                             maxSimilarity = tempSimilarity;
-                            result.clear();
-                            result.add(tempRow);
+                            result.table.Clear();
+                            result.Insert(tableRow);
                         }
                         break;
                     }
