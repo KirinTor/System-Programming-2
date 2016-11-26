@@ -6,54 +6,29 @@ using System.Threading.Tasks;
 
 namespace Lab1
 {
-    class Union
+    struct Union
     {
+        private string str;
+        private ushort ush;
+
+        public Union(string str, ushort ush)
         {
-            private int number;
-            private String string;
-
-    public Union(int number)
-            {
-                this.number = number;
-                this.string = "-1";
-            }
-
-            public Union(String string)
-            {
-                this.string = string;
-                this.number = -1;
-            }
-
-            public int getNumber()
-            {
-                return number;
-            }
-
-            public void setNumber(int number)
-            {
-                this.number = number;
-            }
-
-            public String getString()
-            {
-                return string;
-            }
-
-            public void setString(String string)
-            {
-                this.string = string;
-            }
-
-            @Override
-    public String toString()
-            {
-                if (string.equals("-1"))
-                    return "Union{" +
-                            "number=" + number + '}';
-                else return "Union{" +
-                        "string=" + string + '}';
-            }
+            this.str = str;
+            this.ush = ush;
         }
-
+        public string Str
+        {
+            get { return this.str; }
+            set { this.str = value; }
+        }
+        public ushort Ush
+        {
+            get { return this.ush; }
+            set { this.ush = value; }
+        }
+        public override string ToString()
+        {
+            return "Value[String: " + str + "; Ushort: " + ush + "]";
+        }
     }
 }

@@ -9,8 +9,8 @@ namespace Lab1
     class TableRow
     {
         private Key key;
-        private Function value;
-        public TableRow(Key key, Function value)
+        private Union value;
+        public TableRow(Key key, Union value)
         {
             this.key = key;
             this.value = value;
@@ -20,24 +20,19 @@ namespace Lab1
             get { return this.key; }
             set { this.key = value; }
         }
-        public Function Value
+        public Union Value
         {
             get { return this.value; }
             set { this.value = value; }
         }
-        public void Update(TableRow updatedTableRow)
+        public void UpdateRow(TableRow tableRow)
         {
-            this.directAddressKey = updatedTableRow.getDirectAddressKey();
-            this.foreignAddressKey = updatedTableRow.getForeignAddressKey();
-            this.functionalField = updatedTableRow.getFunctionalField();
+            this.key = tableRow.key;
+            this.value = tableRow.value;
         }
         public override string ToString()
         {
-            return "[Key:" +
-                    "charKey=" + key.KeyChar +
-                    ", stringKey='" + key.KeyString + '\'' +
-                    ", functionalField=" + functionalField.toString() +
-                    '}';
+            return "["+key.ToString() +" "+ value.ToString()+"]";
         }
     }
 }

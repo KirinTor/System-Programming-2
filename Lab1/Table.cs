@@ -6,52 +6,128 @@ using System.Threading.Tasks;
 
 namespace Lab1
 {
+    static class StringCast
+    {
+        public static string Cast(this string str)
+        {
+            str = str.Replace("і", "i");
+            str = str.Replace("І", "I");
+            str = str.Replace("е", "e");
+            str = str.Replace("Е", "E");
+            str = str.Replace("М", "M");
+            str = str.Replace("Н", "H");
+            str = str.Replace("о", "o");
+            str = str.Replace("О", "O");
+            str = str.Replace("Р", "P");
+            str = str.Replace("х", "x");
+            str = str.Replace("Х", "X");
+            str = str.Replace("Т", "T");
+            str = str.Replace("у", "y");
+            str = str.Replace("р", "p");
+            str = str.Replace("а", "a");
+            str = str.Replace("А", "A");
+            str = str.Replace("к", "k");
+            str = str.Replace("К", "K");
+            str = str.Replace("с", "c");
+            str = str.Replace("С", "C");
+            str = str.Replace("В", "B");
+            str = str.ToLower();
+            return str;
+        }
+    }
     class Table
     {
-
-        private ArrayList<TableRow> mainTable;
-
-        public Table(ArrayList<TableRow> rowList)
+        private List<TableRow> table;
+        private int point = 0;
+        public Table(List<TableRow> table)
         {
-            this.mainTable = rowList;
+            this.table = table;
         }
-
-        private void showRow(int currentIndex)
+        public Table(params TableRow[] rows)
         {
-            System.out.println(mainTable.get(currentIndex).toString());
-        }
-
-        private boolean isCharInUnicodeCoincidence(char currentChar)
-        {
-            for (int i = 0; i < UnicodeCoincidence.unicodeCoincidence.length; i++)
+            foreach(TableRow row in rows)
             {
-                for (int j = 0; j < 4; j++)
+                this.table.Add(row);
+            }
+        }
+        public void Insert(TableRow tableRow)
+        {
+            this.table.Add(tableRow);
+        }
+        public void Delete(Key key)
+        {
+            foreach(TableRow tableRow in table)
+            {
+                if (tableRow.Key.IsEquals(key))
+                    table.Remove(tableRow);
+            }
+        }
+        public void Update(Key key, TableRow newTableRow)
+        {
+            foreach (TableRow tableRow in table)
+            {
+                if (tableRow.Key.IsEquals(key))
+                    tableRow.UpdateRow(newTableRow);
+            }
+        }
+        public TableRow SelectRowByIndex(int index)
+        {
+            return table[index];
+        }
+        public Table SelectRowByDirectKey(char charKey)
+        {
+            Table result = null;
+            for (int i = 0; i < table.Count; i++)
+            {
+                if (table[i].Key.CharKey == charKey) result.Insert(table[i]);
+            }
+            if (result.table.Any())
+            {
+                return result;
+            }
+            else
+            {
+                Console.WriteLine("This key is empty");
+                return null;
+            }
+        }
+
+        public Table SelectBySimilarSearch(Key key)
+        {
+            string searchKey = key.StringKey.Cast();
+
+            Table result = null;
+            int maxSimilarity = 0;
+
+            foreach (TableRow tableRow in table)
+            {
+                string thisKey = tableRow.Key.StringKey.Cast();
+                int tempSimilarity = 0;
+
+                for (int i = 0; i < Math.Min(thisKey.Length, searchKey.Length);)
                 {
-                    if ((int)currentChar == UnicodeCoincidence.unicodeCoincidence[i][j]) return true;
+                    if (thisKey[i] == searchKey[i])
+                    {
+                        tempSimilarity++;
+                        i++;
+                    }
+                    else
+                    {
+                        if (tempSimilarity == maxSimilarity)
+                        {
+                            result.Insert(tempRow);
+                        }
+                        else if (tempSimilarity > maxSimilarity)
+                        {
+                            maxSimilarity = tempSimilarity;
+                            result.clear();
+                            result.add(tempRow);
+                        }
+                        break;
+                    }
                 }
             }
-            return false;
-        }
-
-        private int getCharRowInUnicodeCoincidence(char currentChar)
-        {
-            for (int i = 0; i < UnicodeCoincidence.unicodeCoincidence.length; i++)
-            {
-                for (int j = 0; j < 4; j++)
-                {
-                    if ((int)currentChar == UnicodeCoincidence.unicodeCoincidence[i][j]) return i;
-                }
-            }
-            return -1;
-        }
-
-        private int getRowIndexByDirectAdrKey(short directKey)
-        {
-            for (int i = 0; i < mainTable.size(); i++)
-            {
-                if (mainTable.get(i).getDirectAddressKey() == directKey) return i;
-            }
-            return -1;
+            return result;
         }
 
         private boolean isAlreadyInTable(short directAdrKey, String foreignAdrKey)
