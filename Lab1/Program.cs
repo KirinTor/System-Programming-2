@@ -46,16 +46,6 @@ namespace Lab1
             Console.WriteLine(table.SelectByDirectKey(directKey));
             Console.WriteLine();
 
-            Key keyForLinearSearch = new Key("Six", 6);
-            Console.WriteLine("--------Linear search. Key for search: " + keyForLinearSearch + "--------");
-            Console.WriteLine(table.SelectByLinearSearch(keyForLinearSearch));
-            Console.WriteLine(table.SelectByLinearSearch(keyForLinearSearch));
-            Console.WriteLine(table.SelectByLinearSearch(keyForLinearSearch));
-            Console.WriteLine(table.SelectByLinearSearch(keyForLinearSearch));
-            Console.WriteLine(table.SelectByLinearSearch(keyForLinearSearch));
-            Console.WriteLine(table.SelectByLinearSearch(keyForLinearSearch));
-            Console.WriteLine();
-
             Key keyForBinarySearch = new Key("One", 1);
             Console.WriteLine("--------Binary search. Key for search: " + keyForBinarySearch + "--------");
             Console.WriteLine(table.SelectByBinarySearch(keyForBinarySearch));
@@ -64,6 +54,16 @@ namespace Lab1
             Console.WriteLine(table.SelectByBinarySearch(keyForBinarySearch));
             Console.WriteLine(table.SelectByBinarySearch(keyForBinarySearch));
             Console.WriteLine(table.SelectByBinarySearch(keyForBinarySearch));
+            Console.WriteLine();
+
+            Key keyForLinearSearch = new Key("Six", 6);
+            Console.WriteLine("--------Linear search. Key for search: " + keyForLinearSearch + "--------");
+            Console.WriteLine(table.SelectByLinearSearch(keyForLinearSearch));
+            Console.WriteLine(table.SelectByLinearSearch(keyForLinearSearch));
+            Console.WriteLine(table.SelectByLinearSearch(keyForLinearSearch));
+            Console.WriteLine(table.SelectByLinearSearch(keyForLinearSearch));
+            Console.WriteLine(table.SelectByLinearSearch(keyForLinearSearch));
+            Console.WriteLine(table.SelectByLinearSearch(keyForLinearSearch));
             Console.WriteLine();
 
             Key keyForSimilarSearch = new Key("юЖT", 12);
