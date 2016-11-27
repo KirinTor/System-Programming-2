@@ -10,6 +10,9 @@ namespace Lab1
     {
         private Key key;
         private Union value;
+        public TableRow()
+        {
+        }
         public TableRow(Key key, Union value)
         {
             this.key = key;
@@ -30,9 +33,14 @@ namespace Lab1
             this.key = tableRow.key;
             this.value = tableRow.value;
         }
+        public bool IsEquals(TableRow tableRow)
+        {
+            if (this.Key.IsEquals(tableRow.Key)) return true;
+            return false;
+        }
         public override string ToString()
         {
-            return "["+key.ToString() +" "+ value.ToString()+"]";
+            return key.ToString() +" "+ value.ToString();
         }
     }
 }

@@ -28,7 +28,7 @@ namespace Lab1
         }
         public override string ToString()
         {
-            return "Value[String: " + str + "; Ushort: " + ush + "]";
+            return "Value[" + str + "; " + ush + "]";
         }
     }
 }

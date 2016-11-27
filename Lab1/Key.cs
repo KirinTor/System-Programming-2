@@ -8,24 +8,20 @@ namespace Lab1
 {
     struct Key
     {
-        private char charKey;
         private string stringKey;
         private ushort ushortKey;
 
-        public char CharKey { get { return this.charKey; } }
         public string StringKey { get { return this.stringKey; } }
         public ushort UshortKey { get { return this.ushortKey; } }
 
-        public Key(char charKey, string stringKey, ushort ushortKey)
+        public Key(string stringKey, ushort ushortKey)
         {
-            this.charKey = charKey;
             this.stringKey = stringKey;
             this.ushortKey = ushortKey;
         }
         public bool IsEquals(Key key)
         {
-            if (this.charKey == key.CharKey &&
-                this.stringKey == key.StringKey &&
+            if (this.stringKey == key.StringKey &&
                 this.ushortKey == key.UshortKey)
                 return true;
             else
@@ -33,7 +29,7 @@ namespace Lab1
         }
         public override string ToString()
         {
-            return "Key[Char: "+charKey+"; String: "+stringKey+"; Ushort: "+ushortKey+"]";
+            return "Key[" + stringKey + "; "+ushortKey+"]";
         }
     }
 }
