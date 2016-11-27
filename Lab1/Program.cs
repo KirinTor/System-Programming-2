@@ -8,16 +8,8 @@ namespace Lab1
     {
         static void Main(string[] args)
         {
-            ArrayList<TableRow> rowList = new ArrayList<>(5);
-            rowList.add(new TableRow((short)0, "aabbc", new Union(1)));
-            rowList.add(new TableRow((short)1, "abbde", new Union(3)));
-            rowList.add(new TableRow((short)2, "abjko", new Union(2)));
-            rowList.add(new TableRow((short)3, "detrue", new Union("32")));
-            rowList.add(new TableRow((short)4, "kiout", new Union("5")));
-            rowList.add(new TableRow((short)5, "mioadfz", new Union("5")));
-            rowList.add(new TableRow((short)6, "tzposw", new Union("5")));
-
-            Table table = new Table(rowList);
+            Table table = new Table()
+            
 
             table.addRow(new TableRow((short)7, "stirel", new Union("44")));
             table.addRow(new TableRow((short)8, "stream", new Union("12")));
