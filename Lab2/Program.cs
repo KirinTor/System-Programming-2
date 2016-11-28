@@ -10,6 +10,39 @@ namespace Lab2
     {
         static void Main(string[] args)
         {
+            Tree tree = new Tree();
+            tree.print();
+            Console.WriteLine();
+
+            Graph graph = new Graph();
+
+            graph.Signal(Signal.ltr);
+            graph.Signal(Signal.dlm);
+            graph.Signal(Signal.dlm);
+            graph.Signal(Signal.dlm);
+            graph.Signal(Signal.dlm);
+            graph.Signal(Signal.dlm);
+            graph.Signal(Signal.ltr);
+            graph.Signal(Signal.ltr);
+            graph.Signal(Signal.dlm);
+            graph.Signal(Signal.dlm);
+            graph.Signal(Signal.dlm);
+            graph.Signal(Signal.dlm);
+
+            Console.WriteLine();
+
+            graph = new Graph();
+            graph.Signal(Signal.ltr);
+            graph.Signal(Signal.dlm);
+            graph.Signal(Signal.dlm);
+            graph.Signal(Signal.dlm);
+            graph.Signal(Signal.dlm);
+            graph.Signal(Signal.dlm);
+            graph.Signal(Signal.ltr);
+            graph.Signal(Signal.ltr);
+            graph.Signal(Signal.ltr);
+
+            Console.ReadKey();
         }
     }
 }
