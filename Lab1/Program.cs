@@ -52,8 +52,6 @@ namespace Lab1
             Console.WriteLine(table.SelectByBinarySearch(keyForBinarySearch));
             Console.WriteLine(table.SelectByBinarySearch(keyForBinarySearch));
             Console.WriteLine(table.SelectByBinarySearch(keyForBinarySearch));
-            Console.WriteLine(table.SelectByBinarySearch(keyForBinarySearch));
-            Console.WriteLine(table.SelectByBinarySearch(keyForBinarySearch));
             Console.WriteLine();
 
             Key keyForLinearSearch = new Key("Six", 6);
