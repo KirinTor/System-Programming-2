@@ -52,14 +52,12 @@ namespace Lab2
             nodes.Add(node11);
             nodes.Add(node12);
         }
-
         public void print()
         {
             Token root = Root(nodes[0]);
             Search(root);
             Console.WriteLine(result);
         }
-
         private void Search(Token node)
         {
             if (node.Left != null)
@@ -72,7 +70,6 @@ namespace Lab2
                 Search(node.Right);
             }
         }
-
         private Token Root(Token node)
         {
             Token result = node;

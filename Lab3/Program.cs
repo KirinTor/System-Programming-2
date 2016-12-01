@@ -10,8 +10,9 @@ namespace Lab3
     {
         private static string[] terminals = new string[]
         {"==", "++", "--", "=", "?", ":", "*", "[", "]", ";", "{", "}", "+", "-", "/", "(", ")", "<", ">"};
-        public static void LexicalAnalyze(this string analyzedString)
+        public static string LexicalAnalyze(this string analyzedString)
         {
+            string result = "";
             string[] variables = analyzedString.Split(terminals, StringSplitOptions.None);
             foreach (string str in variables)
             {
@@ -20,11 +21,11 @@ namespace Lab3
                     try
                     {
                         int value = Int32.Parse(str);
-                        Console.WriteLine(value + " is a number");
+                        result += value + " is a number\n";
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine(str + " is a variable");
+                        result += str + " is a variable\n";
                     }
                 }
             }
@@ -33,18 +34,19 @@ namespace Lab3
                 if (analyzedString.Contains(token))
                 {
                     analyzedString = analyzedString.Replace(token, "");
-                    Console.WriteLine(token + " is a token");
+                    result += token + " is a token\n";
                 }
             }
+            return result;
         }
     }
     class Program
     {
         static void Main(string[] args)
         {
-            string str = "b=c?d:2*a*[m];";
+            string str = "b=c?d:12*a*[m];";
             Console.WriteLine("Input string:  " + str);
-            str.LexicalAnalyze();
+            Console.WriteLine(str.LexicalAnalyze());
 
             Console.ReadKey();
         }
