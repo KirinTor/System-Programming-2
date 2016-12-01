@@ -15,29 +15,31 @@ namespace Lab4
         private Node left;
         private Node rigth;
 
-        public Node(String value)
+        public Node(string value)
         {
             this.value = value;
             this.id = count;
             count++;
         }
-        public String getValue()
+        public string Value
         {
-            return value;
+            get { return value; }
         }
-        public void setLeft(Node left)
+        public Node Left
         {
-            this.left = left;
+            get { return left; }
+            set { this.left = value; }
         }
-        public void setRigth(Node rigth)
+        public Node Rigth
         {
-            this.rigth = rigth;
+            get { return rigth; }
+            set {this.rigth=value;}
         }
         public void print()
         {
             Console.WriteLine(("Node {0}; Value: {1}; Left: {2}; Right: {3}"), id, value,
-                    left == null ? "<none>" : left.getValue(),
-                    rigth == null ? "<none>" : rigth.getValue());
+                    left == null ? "<none>" : left.Value,
+                    rigth == null ? "<none>" : rigth.Value);
         }
     }
 }

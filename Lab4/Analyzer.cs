@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Lab4
-{/*
+{
     class Analyzer
     {
         private static string[] tokens = new string[]
@@ -15,13 +15,13 @@ namespace Lab4
         {
             string[] array = StringToArray(input);
             Tree tree = new Tree();
-            Tree.setRoot(tree.ArrayToTree(array, 0, array.Length - 1));
+            Tree.Root=tree.ArrayToTree(array, 0, array.Length - 1);
             return tree;
         }
 
         private void Check(string str)
         {
-            bool result = true;
+            bool result = true; //for full check
             foreach (string token in tokens)
             {
                 if (str[0].ToString() == token) { result = false; Console.WriteLine("First symbol must be not a terminal"); }
@@ -128,5 +128,4 @@ namespace Lab4
             return tokensList;
         }
     }
-}*/
 }

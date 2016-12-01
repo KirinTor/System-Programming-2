@@ -23,14 +23,14 @@ namespace Lab4
             }
             int mid = (start + end) / 2;
             Node node = new Node(array[mid]);
-            node.setLeft(ArrayToTree(array, start, mid - 1));
-            node.setRigth(ArrayToTree(array, mid + 1, end));
+            node.Left = ArrayToTree(array, start, mid - 1);
+            node.Rigth = ArrayToTree(array, mid + 1, end);
             nodes.Add(node);
             return node;
         }
-        public static void setRoot(Node root)
+        public static Node Root
         {
-            Tree.root = root;
+            set { Tree.root = value; }
         }
         public void print()
         {
