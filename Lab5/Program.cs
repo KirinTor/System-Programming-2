@@ -13,8 +13,8 @@ namespace Lab5
         public static void Main(String[] args)
         {
             string program = "if (a > b) then begin end else begin end;";
-            //string program = "if (an* > begin) tthen begin end; else beginend;";
             Console.WriteLine("Input string: " + program);
+
             try
             {
                 program.Analyze();
